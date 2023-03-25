@@ -7,7 +7,9 @@ jobs:
     - name: Clone repo
       run: |
         git clone --recurse-submodules https://github.com/arvidn/libtorrent.git
+        pwd
     - name: Install depends
       run: |
         sudo apt-get update
         sudo apt-get install -y libboost-tools-dev libboost-dev libboost-system-dev
+        pwd
