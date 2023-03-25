@@ -2,7 +2,7 @@ name: Build Libtorrent
 on: push
 jobs:
   build:
-    runs-on: ubuntu-lastst
+    runs-on: ubuntu-latest
     steps:
     - name: Clone repo
       run: |
