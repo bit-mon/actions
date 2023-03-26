@@ -15,5 +15,6 @@ jobs:
         echo "using gcc ;" >>~/user-config.jam
         ls
         pwd
+        cd libtorrent
         b2 crypto=openssl cxxstd=14 release
 
