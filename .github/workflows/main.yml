@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Clone repo
+    - name: Clone repo-libtorrent
       run: |
         git clone --recurse-submodules https://github.com/arvidn/libtorrent.git
         pwd
@@ -15,3 +15,4 @@ jobs:
         echo "using gcc ;" >>~/user-config.jam
         pwd
         b2 crypto=openssl cxxstd=14 release
+
