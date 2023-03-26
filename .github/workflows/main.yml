@@ -12,7 +12,7 @@ jobs:
         path: main
     - name: pwd
       run: pwd
-    - name: ls
-      run: ls main
+    - name: echo
+      run: echo ${{ github.workspace }}
 
 
