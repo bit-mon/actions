@@ -9,12 +9,17 @@ jobs:
       with:
         repository: 'ArvidN/libtorrent'
         submodules: 'recursive'
-        path: main
-    - name: pwd
-      run: pwd
-    - name: echo
-      run: echo ${{ github.workspace }}
-    - name: ls
-      run: ls
-
+    - name: Install depends
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libboost-tools-dev libboost-dev libboost-system-dev
+    - name: Build libtorrent
+      run: |
+        echo "using gcc ;" >>~/user-config.jam
+        cd libtorrent
+        b2 crypto=openssl cxxstd=14 release &> ~/log.txt
+    - name: Upload log
+      uses: 
+      
+        
 
