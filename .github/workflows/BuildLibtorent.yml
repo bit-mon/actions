@@ -25,7 +25,7 @@ jobs:
         b2 crypto=openssl cxxstd=14 release &> target/log.txt
         b2 install --prefix=target
     # 上传target文件夹（包括编译日志和编译好的库文件）
-    - name: Upload buildlog
+    - name: Upload target
       uses: actions/upload-artifact@v3
       with:
         name: target
