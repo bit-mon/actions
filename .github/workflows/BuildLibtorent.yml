@@ -1,26 +1,34 @@
 name: Build Libtorrent
-on: push
+# 手动触发
+on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    # 检出libtorrent仓库
     - name: Checkout libtorrent
       uses: actions/checkout@v3
       with:
         repository: 'ArvidN/libtorrent'
+        # 包括子模块
         submodules: 'recursive'
+    # 安装相关依赖，代码来自官方readme
     - name: Install depends
       run: |
         sudo apt-get update
         sudo apt-get install -y libboost-tools-dev libboost-dev libboost-system-dev
     - name: Build libtorrent
       run: |
+        # 使用boost编译，代码来自官方readme，编译日志写入文件
         echo "using gcc ;" >>~/user-config.jam
         b2 crypto=openssl cxxstd=14 release &> ~/log.txt
-    - name: Upload log
+        b2 install --prefix=./
+        ls -l
+    - name: Upload buildlog
       uses: actions/upload-artifact@v3
       with:
         name: build-log.txt
         path: ~/log.txt
+
         
 
