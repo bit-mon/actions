@@ -19,7 +19,9 @@ jobs:
         cd libtorrent
         b2 crypto=openssl cxxstd=14 release &> ~/log.txt
     - name: Upload log
-      uses: 
-      
+    - uses: actions/upload-artifact@v3
+      with:
+        name: build-log.txt
+        path: ~/log.txt
         
 
