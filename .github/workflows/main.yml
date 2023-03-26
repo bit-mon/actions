@@ -13,5 +13,5 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libboost-tools-dev libboost-dev libboost-system-dev
         echo "using gcc ;" >>~/user-config.jam
-        b2 crypto=openssl cxxstd=14 release
         pwd
+        b2 crypto=openssl cxxstd=14 release
