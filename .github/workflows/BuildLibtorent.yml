@@ -22,14 +22,21 @@ jobs:
       run: |
         # 使用boost编译，代码来自官方readme，编译日志写入文件
         echo "using gcc ;" >>~/user-config.jam
-        b2 crypto=openssl cxxstd=14 release &> target/log.txt
-        b2 install --prefix=target
-    # 上传target文件夹（包括编译日志和编译好的库文件）
-    - name: Upload target
+        # b2 crypto=openssl cxxstd=14 release &> log.txt
+        # 将在lib文件夹下生成so文件
+        b2 install --prefix=./
+    # 上传lib文件夹
+    - name: Upload lib
       uses: actions/upload-artifact@v3
       with:
-        name: target
-        path: target
+        name: lib
+        path: lib
+    # 上传编译日志
+    - name: Upload log
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-log.txt
+        path: log.txt
 
         
 
