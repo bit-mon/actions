@@ -23,7 +23,7 @@ jobs:
         echo "using gcc ;" >>~/user-config.jam
         b2 crypto=openssl cxxstd=14 release &> ~/log.txt
         b2 install --prefix=./
-        ls -l
+        ls -l lib bin
     - name: Upload buildlog
       uses: actions/upload-artifact@v3
       with:
