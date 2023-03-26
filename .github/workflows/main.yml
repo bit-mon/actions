@@ -9,19 +9,7 @@ jobs:
       with:
         repository: 'ArvidN/libtorrent'
         submodules: 'recursive'
-    - name: Install depends
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libboost-tools-dev libboost-dev libboost-system-dev
-    - name: Build libtorrent
-      run: |
-        echo "using gcc ;" >>~/user-config.jam
-        cd libtorrent
-        b2 crypto=openssl cxxstd=14 release &> ~/log.txt
-    - name: Upload log
-      uses: actions/upload-artifact@v3
-      with:
-        name: build-log.txt
-        path: ~/log.txt
+    - name: ls
+      run: ls
         
 
