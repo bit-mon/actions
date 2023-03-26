@@ -4,17 +4,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Clone repo-libtorrent
-      run: |
-        git clone --recurse-submodules https://github.com/arvidn/libtorrent.git
-        pwd
-    - name: Install Boost
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libboost-tools-dev libboost-dev libboost-system-dev
-        echo "using gcc ;" >>~/user-config.jam
-        ls
-        pwd
-        cd libtorrent
-        b2 crypto=openssl cxxstd=14 release
+    - name: Checkout libtorrent
+      uses: actions/checkout@v3
+      with:
+        repository: 'ArvidN/libtorrent'
+        submodules: 'recursive'
+        path: main
+    - name: pwd
+      run: pwd
+    - name: ls
+      run: ls
+
 
