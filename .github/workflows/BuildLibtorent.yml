@@ -24,7 +24,7 @@ jobs:
         echo "using gcc ;" >>~/user-config.jam
         # b2 crypto=openssl cxxstd=14 release &> log.txt
         # 将在lib文件夹下生成so文件
-        b2 install --prefix=./
+        b2 crypto=openssl cxxstd=14 release install --prefix=./ &> log.txt
     # 上传lib文件夹
     - name: Upload lib
       uses: actions/upload-artifact@v3
